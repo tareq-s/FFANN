@@ -169,7 +169,7 @@ FFANN BreedNetworks(FFANN Parent1, FFANN Parent2, float mutation_probability)
 		//randomly mutate genes
 		for (int k = 0; k < offspringnetwork.Weights[i].Elements.size(); k++)
 		{
-			int random_int = rand() % (int)((1.0f - mutation_probability) * 1000); //we round mutation_probability * 1000 to an integer to ensure it is not a float
+			int random_int = rand() % (int)((1.1f - mutation_probability) * 1000); //we round mutation_probability * 1000 to an integer to ensure it is not a float
 			for (int j = 0; j < 10; j++) //we're choosing out of 1000 to get precision up to the hundredth place, so we must take 10 samples to get a probability out of 100
 			{
 				//random selection of gene
@@ -197,7 +197,7 @@ FFANN BreedNetworks(FFANN Parent1, FFANN Parent2, float mutation_probability)
 		//randomly mutate genes
 		for (int k = 0; k < offspringnetwork.Biases[i].Elements.size(); k++)
 		{
-			int random_int = rand() % (int)(mutation_probability * 1000); //we round mutation_probability * 1000 to an integer to ensure it is not a float
+			int random_int = rand() % (int)((1.1f - mutation_probability) * 1000); //we round mutation_probability * 1000 to an integer to ensure it is not a float
 			for (int j = 0; j < 10; j++) //we're choosing out of 1000 to get precision up to the hundredth place, so we must take 10 samples to get a probability out of 100
 			{
 				//random selection of gene
