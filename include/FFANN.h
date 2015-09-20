@@ -1,3 +1,5 @@
+//Sully Chen 2015
+
 #pragma once
 #ifndef FFANN_H
 #define FFANN_H
@@ -17,5 +19,7 @@ public:
 	std::vector<Matrix> FeedForward(Matrix input);
 	float TrainWithBackPropagation(Matrix input, Matrix output, float learning_rate);
 };
+
+FFANN BreedNetworks(FFANN Parent1, FFANN Parent2, float mutation_probability);
 
 #endif
