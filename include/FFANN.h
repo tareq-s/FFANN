@@ -20,6 +20,6 @@ public:
 	float TrainWithBackPropagation(Matrix input, Matrix output, float learning_rate);
 };
 
-FFANN BreedNetworks(FFANN Parent1, FFANN Parent2, float mutation_probability);
+FFANN BreedNetworks(FFANN Parent1, FFANN Parent2, float mutation_probability, float mutation_range);
 
 #endif
