@@ -131,8 +131,18 @@ float FFANN::TrainWithBackPropagation(Matrix input, Matrix output, float learnin
 	return cost;
 }
 
-FFANN BreedNetworks(FFANN Parent1, FFANN Parent2, float mutation_probability)
+FFANN BreedNetworks(FFANN Parent1, FFANN Parent2, float mutation_probability, float mutation_range)
 {
+	if (mutation_probability > 1.0f)
+	{
+		mutation_probability = 1.0f;
+		std::cout << "Warning: keep mutation probability between 0.0 and 1.0. Capping to 1.0" << std::endl;
+	}
+	else if (mutation_probability < 0.0f)
+	{
+		mutation_probability = 0.0f;
+		std::cout << "Warning: keep mutation probability between 0.0 and 1.0. Flooring to 0.0" << std::endl;
+	}
 	//Make sure the networks are the same size
 	if (Parent1.Num_Layers != Parent2.Num_Layers)
 	{
@@ -175,7 +185,7 @@ FFANN BreedNetworks(FFANN Parent1, FFANN Parent2, float mutation_probability)
 				//random selection of gene
 				if (random_int == rand() % (int)(mutation_probability * 1000))
 				{
-					offspringnetwork.Weights[i].Elements[k] += (rand() % 20000 - 10000) / 10000.0f; //mutate the gene
+					offspringnetwork.Weights[i].Elements[k] += (rand() % (int)(mutation_range * 20000 - mutation_range * 10000)) / 10000.0f; //mutate the gene
 				}
 			}
 		}
@@ -203,7 +213,7 @@ FFANN BreedNetworks(FFANN Parent1, FFANN Parent2, float mutation_probability)
 				//random selection of gene
 				if (random_int == rand() % (int)(mutation_probability * 1000))
 				{
-					offspringnetwork.Biases[i].Elements[k] += (rand() % 20000 - 10000) / 10000.0f; //mutate the gene
+					offspringnetwork.Biases[i].Elements[k] += (rand() % (int)(mutation_range * 20000 - mutation_range * 10000)) / 10000.0f; //mutate the gene
 				}
 			}
 		}
